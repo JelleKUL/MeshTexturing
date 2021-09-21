@@ -2,39 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Controls for the Single HDRI depth Mapper
-/// </summary>
-public class SingleHDRIShaderController : MonoBehaviour
+namespace JelleKUL.MeshMapping
 {
-    [SerializeField]
-    private bool UpdateShaderInEditor = false;
-    [SerializeField]
-    private Material singleHDRIMaterial;
-    [SerializeField]
-    private LocalisedImageScriptableObject localisedImage;
-
-    private void OnDrawGizmosSelected()
-    {
-        if (!UpdateShaderInEditor) return;
-
-        UpdateMaterial();
-    }
-
     /// <summary>
-    /// Updates the material with a texture, position and rotation
+    /// Controls for the Single HDRI depth Mapper
     /// </summary>
-    public void UpdateMaterial()
+    public class SingleHDRIShaderController : MonoBehaviour
     {
-        if (!(singleHDRIMaterial && localisedImage))
+        [SerializeField]
+        private bool UpdateShaderInEditor = false;
+        [SerializeField]
+        private Material singleHDRIMaterial;
+        [SerializeField]
+        private LocalisedImageScriptableObject localisedImage;
+
+        private void OnDrawGizmosSelected()
         {
-            Debug.LogWarning("No material or localisedImage Set");
-            return;
+            if (!UpdateShaderInEditor) return;
+
+            UpdateMaterial();
         }
 
-        singleHDRIMaterial.SetTexture("_MainTex", localisedImage.image);
-        singleHDRIMaterial.SetVector("_HDRIPos", transform.position);
-        singleHDRIMaterial.SetVector("_HDRIRot", transform.rotation.eulerAngles * Mathf.Deg2Rad);
+        /// <summary>
+        /// Updates the material with a texture, position and rotation
+        /// </summary>
+        public void UpdateMaterial()
+        {
+            if (!(singleHDRIMaterial && localisedImage))
+            {
+                Debug.LogWarning("No material or localisedImage Set");
+                return;
+            }
 
+            singleHDRIMaterial.SetTexture("_MainTex", localisedImage.image);
+            singleHDRIMaterial.SetVector("_HDRIPos", transform.position);
+            singleHDRIMaterial.SetVector("_HDRIRot", transform.rotation.eulerAngles * Mathf.Deg2Rad);
+
+        }
     }
 }

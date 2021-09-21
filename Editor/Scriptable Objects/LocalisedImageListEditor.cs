@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(LocalisedImageListScriptableObject))]
-public class LocalisedImageListEditor : Editor
+namespace JelleKUL.MeshMapping
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(LocalisedImageListScriptableObject))]
+    public class LocalisedImageListEditor : Editor
     {
-        base.OnInspectorGUI();
-        GUILayout.Space(20);
-
-        LocalisedImageListScriptableObject localisedImageList = (LocalisedImageListScriptableObject)target;
-        if (GUILayout.Button("Spawn Localised Images"))
+        public override void OnInspectorGUI()
         {
-            localisedImageList.SpawnImages();
+            base.OnInspectorGUI();
+            GUILayout.Space(20);
+
+            LocalisedImageListScriptableObject localisedImageList = (LocalisedImageListScriptableObject)target;
+            if (GUILayout.Button("Spawn Localised Images"))
+            {
+                localisedImageList.SpawnImages();
+            }
         }
     }
 }

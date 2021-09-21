@@ -1,19 +1,17 @@
 {
-    "name": "com.jelle-kul.mesh-texturing",
-    "version": "0.0.1",
-    "displayName": "Mesh Texturing",
-    "description": "Tools to apply images to meshes in 3D space",
-    "unity": "2020.3",
-    "unityRelease": "0f1",
-    "dependencies": {},
-    "keywords": [
-        "mesh",
-        "texturing",
-        "mapping"
-    ],
-    "author": {
-        "name": "Jelle Vermandere",
-        "email": "jelle.vermandere@kuleuven.be",
-        "url": "http://www.jellever.be"
-    }
+  "name": "com.jelle-kul.mesh-texturing",
+  "version": "0.0.1",
+  "displayName": "Mesh Texturing",
+  "description": "Tools to apply images to meshes in 3D space",
+  "keywords": [
+    "mesh",
+    "texturing",
+    "mapping"
+  ],
+  "author": {
+    "name": "Jelle Vermandere",
+    "email": "jelle.vermandere@kuleuven.be",
+    "url": "http://www.jellever.be"
+  },
+  "type": "library"
 }

@@ -1,24 +1,27 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(LocalisedImageScriptableObject))]
-public class LocalisedImageEditor : Editor
+namespace JelleKUL.MeshMapping
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(LocalisedImageScriptableObject))]
+    public class LocalisedImageEditor : Editor
     {
-        base.OnInspectorGUI();
-        GUILayout.Space(20);
-
-        LocalisedImageScriptableObject localisedImage = (LocalisedImageScriptableObject)target;
-        if (GUILayout.Button("Create Image Material"))
+        public override void OnInspectorGUI()
         {
-            // Create a material with unlit/texture
-            Material material = new Material(Shader.Find("Unlit/Texture"));
-            material.mainTexture = localisedImage.image;
+            base.OnInspectorGUI();
+            GUILayout.Space(20);
 
-            AssetDatabase.CreateAsset(material, "Assets/Materials/" + localisedImage.name + "_mat.mat");
+            LocalisedImageScriptableObject localisedImage = (LocalisedImageScriptableObject)target;
+            if (GUILayout.Button("Create Image Material"))
+            {
+                // Create a material with unlit/texture
+                Material material = new Material(Shader.Find("Unlit/Texture"));
+                material.mainTexture = localisedImage.image;
 
-            localisedImage.material = material;
+                AssetDatabase.CreateAsset(material, "Assets/Materials/" + localisedImage.name + "_mat.mat");
+
+                localisedImage.material = material;
+            }
         }
     }
 }

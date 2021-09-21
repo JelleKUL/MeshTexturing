@@ -1,39 +1,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewLocalisedImageList", menuName = "ScriptableObjects/Localised Image List")]
-public class LocalisedImageListScriptableObject : ScriptableObject
+namespace JelleKUL.MeshMapping
 {
-    public GameObject imageSpherePrefab;
-
-    public List<LocalisedImageScriptableObject> images;
-
-    public void SpawnImages()
+    [CreateAssetMenu(fileName = "NewLocalisedImageList", menuName = "ScriptableObjects/Localised Image List")]
+    public class LocalisedImageListScriptableObject : ScriptableObject
     {
-        if (!imageSpherePrefab) return;
+        public GameObject imageSpherePrefab;
 
-        foreach (var item in images)
+        public List<LocalisedImageScriptableObject> images;
+
+        public void SpawnImages()
         {
-            string name = "ImageSphere - " + item.name;
-            GameObject newObj = GameObject.Find(name);
+            if (!imageSpherePrefab) return;
 
-            if (newObj == null)
+            foreach (var item in images)
             {
-                newObj = Instantiate(imageSpherePrefab, item.position, item.GetRotation());
-                newObj.name = name;
-            }
-            else
-            {
-                newObj.transform.position = item.position;
-                newObj.transform.rotation = item.GetRotation();
-            }
+                string name = "ImageSphere - " + item.name;
+                GameObject newObj = GameObject.Find(name);
 
-            if (newObj.TryGetComponent(out LocalisedImageController controller))
-            {
-                controller.localisedImage = item;
-                controller.SetMaterial(item.material);
-            }
+                if (newObj == null)
+                {
+                    newObj = Instantiate(imageSpherePrefab, item.position, item.GetRotation());
+                    newObj.name = name;
+                }
+                else
+                {
+                    newObj.transform.position = item.position;
+                    newObj.transform.rotation = item.GetRotation();
+                }
 
+                if (newObj.TryGetComponent(out LocalisedImageController controller))
+                {
+                    controller.localisedImage = item;
+                    controller.SetMaterial(item.material);
+                }
+
+            }
         }
     }
 }
