@@ -1,5 +1,5 @@
 {
-  "name": "com.jelle-kul.mesh-texturing",
+  "name": "com.jellekul.mesh-texturing",
   "version": "0.0.1",
   "displayName": "Mesh Texturing",
   "description": "Tools to apply images to meshes in 3D space",
