@@ -13,5 +13,12 @@
     "email": "jelle.vermandere@kuleuven.be",
     "url": "http://www.jellever.be"
   },
-  "type": "tool"
+  "type": "tool",
+  "samples": [
+      {
+          "displayName": "Working Sample scenes",
+          "description": "Shows how everything works in practice",
+          "path": "Samples~/SampleProject"
+      }
+  ]
 }
